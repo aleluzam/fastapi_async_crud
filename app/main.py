@@ -1,16 +1,14 @@
-from fastapi import FastAPI, Depends
 from contextlib import asynccontextmanager
-from .database import create_tables, async_engine, get_db
-from .models import users
+from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from .database import create_tables, async_engine, get_db, drop_tables
 from .models.users import UserTable
 
 
-
-
-@asynccontextmanager # manejo del ciclo de vida
+@asynccontextmanager
 async def lifespan(app: FastAPI):
+    await drop_tables() # para dev
     await create_tables()
     yield
     await async_engine.dispose()
@@ -24,7 +22,6 @@ async def root():
     return {"message": "Hello World"}
 
 
-from sqlalchemy import select
 
 @app.get("/users")  
 async def get_users(db: AsyncSession = Depends(get_db)):
@@ -36,10 +33,9 @@ async def get_users(db: AsyncSession = Depends(get_db)):
 @app.post("/add_user")
 async def add_user(db: AsyncSession = Depends(get_db)):
     new_user = UserTable(
-        name="Alejandro",
-        last_name="Luzardo",
         username="aleluzam",
-        mail="alzzla@gmail.com"
+        mail="alzzla@gmail.com",
+        password_hashed = "prueba"
     )
     db.add(new_user)
     await db.commit() 
