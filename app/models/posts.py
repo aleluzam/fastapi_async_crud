@@ -15,4 +15,4 @@ class PostTable(Base, TimestampMixin, SoftDeleteMixin):
     
     author = relationship("UserTable", lazy="joined", back_populates="posts")
     comments = relationship("CommentTable", lazy='selectin', back_populates="post")
-    tags = relationship("TagTable", lazy="joined", back_populates="posts")
+    tags = relationship("PostTagTable", lazy="joined", back_populates="posts")

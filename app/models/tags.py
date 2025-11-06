@@ -12,7 +12,6 @@ class TagTable(Base, TimestampMixin, SoftDeleteMixin):
     name = Column(String(50), index=True, nullable=False)
     use_counter = Column(String, default=0)
     
-    posts = relationship("PostTable", lazy="selectin", back_populates="tags")
 
 
 
@@ -22,3 +21,5 @@ class PostTagTable(Base):
     id = Column(Integer, primary_key=True, index=True)
     post_id = Column(Integer, ForeignKey("posts.id"))
     tag_id = Column(Integer, ForeignKey("tags.id"))
+    
+    posts = relationship("PostTable", lazy="selectin", back_populates="tags")
