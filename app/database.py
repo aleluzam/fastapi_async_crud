@@ -2,17 +2,13 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from sqlalchemy.orm import declarative_base
 from .config import settings
 
-Base = declarative_base() #base a heredar para la creacion de las tablas
+Base = declarative_base() 
+DATABASE_URL = settings.database_url 
 
-DATABASE_URL = settings.database_url # se importa desde la instancia de la clase que creamos
-
-
-# motor asyncrono de coneccion a base de datos
 async_engine = create_async_engine(DATABASE_URL,
-                                   echo=True ) # enseña los comandos sql en la terminal 
+                                   echo=True )  
 
 
-# Creador de sesiones
 AsyncSessionLocal = async_sessionmaker( 
     async_engine,
     class_=AsyncSession, expire_on_commit= False

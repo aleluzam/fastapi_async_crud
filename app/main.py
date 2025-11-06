@@ -4,12 +4,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from .database import create_tables, async_engine, get_db, drop_tables
 from .models.users import UserTable
+from .models.comments import CommentTable
+from .models.posts import PostTable
+from .models.tags import TagTable
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await drop_tables() # para dev
-    await create_tables()
+     # await create_tables()
     yield
     await async_engine.dispose()
 
@@ -28,8 +30,26 @@ async def get_users(db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(UserTable))
     users = result.scalars().all()
     return users
-    
-    
+
+@app.get("/comments")  
+async def get_users(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(CommentTable))
+    users = result.scalars().all()
+    return users
+
+@app.get("/posts")  
+async def get_users(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(PostTable))
+    users = result.scalars().all()
+    return users
+
+@app.get("/tags")  
+async def get_users(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(TagTable))
+    users = result.scalars().all()
+    return users
+
+
 @app.post("/add_user")
 async def add_user(db: AsyncSession = Depends(get_db)):
     new_user = UserTable(
