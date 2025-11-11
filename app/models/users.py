@@ -14,4 +14,3 @@ class UserTable(Base, TimestampMixin, SoftDeleteMixin):
     
     posts = relationship("PostTable", lazy = "selectin", back_populates="author")
     comments = relationship("CommentTable", lazy = "selectin", back_populates="author")
-    
