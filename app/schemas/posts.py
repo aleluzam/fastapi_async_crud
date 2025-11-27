@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict, Field
+from typing import List
 from datetime import datetime
 from models.comments import CommentTable
 
@@ -21,7 +22,8 @@ class PostUpdate(BaseModel):
     title: str | None = Field(min_length=10, max_length=50, default = None)
     content: str | None = Field(min_length=10, max_length=200, default = None)
 
-class PostResponse(PostBase):
+class PostPublic(PostBase):
     created_at: datetime
     updated_at: datetime | None
-    # agregar comentarios y tags
+    # comments: List[CommentResponse] = []
+    # tags: List[TagResponse] = []

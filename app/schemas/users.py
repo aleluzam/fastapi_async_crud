@@ -6,6 +6,9 @@ class UserBase(BaseModel):
     username: str = Field(min_length=5, max_length=50)
     mail: EmailStr
 
+class UserPublic(BaseModel):
+    username: str = Field(min_length=5, max_length=50)
+
 class UserCreate(UserBase):
     password: str = Field(min_length=10, max_length=30)
     
