@@ -8,6 +8,14 @@ class UserBase(BaseModel):
 
 class UserPublic(BaseModel):
     username: str = Field(min_length=5, max_length=50)
+    
+    model_config = ConfigDict(from_attributes=True)
+
+class UserLogin(BaseModel):
+    username: str = Field(min_length=5, max_length=50)
+    password: str = Field(min_length=10, max_length=30)
+
+
 
 class UserCreate(UserBase):
     password: str = Field(min_length=10, max_length=30)
