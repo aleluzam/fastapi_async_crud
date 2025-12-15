@@ -9,18 +9,13 @@ from ..utils.dependencies import validate_user
 from ..utils.security import encode_jwt, hash_password
 from ..config import settings
 from ..database import get_db
-from ..schemas.tokens import Token
-from ..schemas.users import UserCreate, UserResponse, UserLogin
+from ..schemas.tokens import Token, LoginRequest
+from ..schemas.users import UserCreate, UserResponse
 from ..models.users import UserTable
 
 
 auth_router = APIRouter(prefix="/auth", tags=["authentication"])
 
-
-
-@auth_router.get("/hola")
-async def hello_from_auth():
-    return "Hello from auth"
 
 
 @auth_router.post("/token", response_model=Token)
@@ -97,7 +92,7 @@ async def register(user: UserCreate, db: AsyncSession = Depends(get_db)) -> User
 
 # login
 @auth_router.post("/login", response_model=Token)
-async def login(data: UserLogin, db: AsyncSession = Depends(get_db)) -> Token:
+async def login(data: LoginRequest, db: AsyncSession = Depends(get_db)) -> Token:
     
     user = await validate_user(password=data.password, username=data.username, db=db)
     if not user:
