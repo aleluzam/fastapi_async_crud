@@ -13,7 +13,7 @@ class SoftDeleteMixin:
     
     def soft_delete(self):
         self.is_deleted = True
-        self.deleted_at = datetime.now(timezone.utc)
+        self.deleted_at = func.now()
         
     def restore(self):
         self.is_deleted = False
