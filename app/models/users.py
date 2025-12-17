@@ -2,7 +2,9 @@ from sqlalchemy import Column, Boolean, String, Integer
 from sqlalchemy.orm import relationship
 from ..database import Base
 from ..models.mixins import TimestampMixin, SoftDeleteMixin
-
+from ..models.posts import PostTable
+from ..models.comments import CommentTable
+from ..models.tags import PostTagTable
 
 class UserTable(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "users"

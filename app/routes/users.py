@@ -6,6 +6,7 @@ from ..crud.base import CRUDBase
 from ..models.users import UserTable
 from ..utils.security import get_current_user
 from ..schemas.users import UserPublic, UserUpdate, UserResponse, UserCreate
+from ..utils.dependencies import get_id_from_jwt
 
 
 
@@ -22,6 +23,16 @@ async def get_all_users(db: AsyncSession = Depends(get_db)):
                             detail="No hay usuarios actualmente")
     return all_users
 
+@users_router.get("/me", response_model=UserResponse)
+async def get_my_profile(db: AsyncSession = Depends(get_db), user_id: int = Depends(get_id_from_jwt)) -> UserResponse:
+    user = await crud_users.get_by_id(db=db, id=user_id)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Usuario con ID {user_id} no encontrado"
+        )
+    return user
+
 @users_router.get("/{id}")
 async def get_by_id(id: int, db: AsyncSession = Depends(get_db), current_user: UserPublic = Depends(get_current_user)):
     user = await crud_users.get_by_id(id=id, db=db)
@@ -30,6 +41,8 @@ async def get_by_id(id: int, db: AsyncSession = Depends(get_db), current_user: U
                              detail=f"Registro de id {id} no encontrado")
     return user
 
+    
+    
 # POST
 @users_router.post("/create", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)) -> UserResponse:
