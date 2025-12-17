@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8765:8765"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://luzardo:luzardo2004@db:5432/miapp
+      - SECRET_KEY=53011238
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    depends_on:
+      - db
+    networks:
+      - fastapi_red
+    restart: unless-stopped
+
+  db:
+    image: postgres:17.1
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=miapp
+      - POSTGRES_USER=luzardo
+      - POSTGRES_PASSWORD=luzardo2004
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - fastapi_red
+    restart: unless-stopped
+
+volumes:
+  db-data:
+
+networks:
+  fastapi_red:
+    driver: bridge
