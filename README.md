@@ -29,25 +29,25 @@ API REST completamente asíncrona construida con **FastAPI**, **PostgreSQL**, **
 
 ---
 
-## ✨ Características
+##  Características
 
-- ✅ **Completamente Asíncrono** - Operaciones no bloqueantes con `asyncio`
-- ✅ **Autenticación JWT** - Sistema seguro de tokens con `python-jose`
-- ✅ **CRUD Completo** - Create, Read, Update, Delete de usuarios
-- ✅ **Gestión de Perfil** - Los usuarios pueden gestionar su propio perfil
-- ✅ **Soft Delete** - Eliminación lógica de registros
-- ✅ **Validación Robusta** - Validación de contraseñas con requisitos de seguridad
-- ✅ **PostgreSQL** - Base de datos relacional con `asyncpg`
-- ✅ **Docker & Docker Compose** - Despliegue containerizado
-- ✅ **Alembic** - Migraciones de base de datos versionadas
-- ✅ **Middleware Personalizado** - Medición de tiempo de respuesta
-- ✅ **Documentación Automática** - Swagger UI y ReDoc
-- ✅ **Hashing Seguro** - Contraseñas hasheadas con `argon2`
-- ✅ **Type Hints** - Código completamente tipado
+-  **Completamente Asíncrono** - Operaciones no bloqueantes con `asyncio`
+-  **Autenticación JWT** - Sistema seguro de tokens con `python-jose`
+-  **CRUD Completo** - Create, Read, Update, Delete de usuarios
+-  **Gestión de Perfil** - Los usuarios pueden gestionar su propio perfil
+-  **Soft Delete** - Eliminación lógica de registros
+-  **Validación Robusta** - Validación de contraseñas con requisitos de seguridad
+-  **PostgreSQL** - Base de datos relacional con `asyncpg`
+-  **Docker & Docker Compose** - Despliegue containerizado
+-  **Alembic** - Migraciones de base de datos versionadas
+-  **Middleware Personalizado** - Medición de tiempo de respuesta
+-  **Documentación Automática** - Swagger UI y ReDoc
+-  **Hashing Seguro** - Contraseñas hasheadas con `argon2`
+-  **Type Hints** - Código completamente tipado
 
 ---
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 | Tecnología      | Versión | Propósito                   |
 | --------------- | ------- | --------------------------- |
@@ -65,7 +65,7 @@ API REST completamente asíncrona construida con **FastAPI**, **PostgreSQL**, **
 
 ---
 
-## 📦 Requisitos Previos
+##  Requisitos Previos
 
 ### Con Docker:
 
@@ -80,9 +80,9 @@ API REST completamente asíncrona construida con **FastAPI**, **PostgreSQL**, **
 
 ---
 
-## 🚀 Instalación
+##  Instalación
 
-### 🐳 Opción 1: Con Docker (Recomendado)
+###  Opción 1: Con Docker (Recomendado)
 
 #### 1. Clonar el repositorio
 
@@ -142,13 +142,13 @@ docker-compose restart
 # Ver logs
 docker-compose logs -f
 
-# Eliminar volúmenes (⚠️ borra la BD)
+# Eliminar volúmenes ( borra la BD)
 docker-compose down -v
 ```
 
 ---
 
-### 💻 Opción 2: Sin Docker (Desarrollo Local)
+###  Opción 2: Sin Docker (Desarrollo Local)
 
 #### 1. Clonar el repositorio
 
@@ -228,7 +228,7 @@ La API estará disponible en: **http://localhost:8765**
 
 ---
 
-## ⚙️ Configuración
+##  Configuración
 
 ### Variables de Entorno
 
@@ -258,7 +258,7 @@ settings = Settings()
 
 ---
 
-## 🗄️ Migraciones con Alembic
+##  Migraciones con Alembic
 
 ### Comandos principales:
 
@@ -293,7 +293,7 @@ alembic upgrade head
 
 ---
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 API/
@@ -334,9 +334,9 @@ API/
 
 ---
 
-## 🔌 Endpoints de la API
+##  Endpoints de la API
 
-### 📚 Documentación Interactiva
+###  Documentación Interactiva
 
 - **Swagger UI**: http://localhost:8765/docs
 - **ReDoc**: http://localhost:8765/redoc
@@ -369,7 +369,7 @@ API/
 
 ---
 
-## 📝 Ejemplos de Uso
+##  Ejemplos de Uso
 
 ### 1. Registrar un nuevo usuario
 
@@ -477,7 +477,7 @@ curl -X DELETE "http://localhost:8765/user/delete/1" \
 
 ---
 
-## 🔐 Autenticación JWT
+##  Autenticación JWT
 
 ### Flujo de autenticación:
 
@@ -551,7 +551,7 @@ console.log(profile);
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ### Instalar dependencias de testing:
 
@@ -602,7 +602,7 @@ pytest
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Error: "Could not connect to database"
 
@@ -635,7 +635,7 @@ ports:
 
 ---
 
-## 🤝 Contribuir
+##  Contribuir
 
 Las contribuciones son bienvenidas. Por favor:
 
@@ -654,13 +654,13 @@ Las contribuciones son bienvenidas. Por favor:
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
 
-## 👤 Autor
+##  Autor
 
 **Tu Nombre**
 
@@ -669,7 +669,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 ---
 
-## 🙏 Agradecimientos
+##  Agradecimientos
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
@@ -677,7 +677,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 ---
 
-## 🔜 Roadmap
+##  Roadmap
 
 - [ ] Sistema de roles y permisos (Admin, User)
 - [ ] Refresh tokens
@@ -694,6 +694,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 ---
 
-⭐ **Si este proyecto te fue útil, considera darle una estrella en GitHub!**
 
 **Hecho con ❤️ usando FastAPI**
+
